@@ -1075,14 +1075,14 @@ body {
   }
 }
 .project-list {
-  padding: 0;
-  list-style: none;
+  padding-left: 0px; /* 这为项目符号提供了空间 */
+  list-style: disc inside; /* 'disc' 是标准的黑点项目符号，'inside' 使项目符号在内容区域内部渲染 */
 }
-.project-list .project-item {
+.project-item {
   margin-bottom: 5px;
 }
-.project-list .project-item p {
-  display: inline;
+.project-item p {
+  display: inline; /* 这使得段落内联显示，但请确保这是您希望的布局方式 */
 }
 article header .posttitle {
   margin-top: 0;
@@ -1232,26 +1232,45 @@ article .content .caption {
 #archive .post-list {
   padding: 0;
 }
-#archive .post-list .post-item {
-  margin-bottom: 1rem;
-  margin-left: 0;
+#archive .post-item {
   list-style-type: none;
+  margin-bottom: 1rem;
 }
-#archive .post-list .post-item .meta {
-  display: block;
+#archive .meta {
+  display: inline-block;
   margin-right: 16px;
-  min-width: 100px;
   color: #666;
   font-size: 14px;
 }
+#archive .post-title {
+  display: inline-block;
+  vertical-align: top;
+}
+#archive .post-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px; /* Add a little space between the title and the image */
+}
 @media (min-width: 480px) {
-  #archive .post-list .post-item {
+  .post-item {
+/* This makes the post item a flex container only in wider screens */
     display: flex;
-    margin-bottom: 5px;
-    margin-left: 1rem;
+    flex-direction: column; /* Stack the flex items vertically */
   }
-  #archive .post-list .post-item .meta {
-    text-align: left;
+  .meta,
+  .post-title {
+/* These are flex items; they are now stacked vertically and take full width */
+    display: block;
+    width: 100%;
+  }
+  .post-image img {
+/* The image is now a flex item too, appearing below the title and date */
+    order: 2; /* This will ensure the image is below the title even if it comes first in the HTML */
+    max-width: 50%; /* Adjust the max-width as necessary */
+    height: auto;
+    margin-top: 10px; /* Adjust the space between the title and the image as necessary */
+    align-self: center; /* Center the image within the flex container */
   }
 }
 .blog-post-comments {
