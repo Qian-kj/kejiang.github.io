@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2023/10/25/ai-urban-planner/original.png">
 <meta property="og:image" content="http://example.com/2023/10/25/ai-urban-planner/cmarl.png">
 <meta property="article:published_time" content="2023-10-25T15:54:40.000Z">
-<meta property="article:modified_time" content="2024-02-11T10:14:06.753Z">
+<meta property="article:modified_time" content="2024-02-11T10:19:43.279Z">
 <meta property="article:author" content="Kejiang Qian">
 <meta property="article:tag" content="Artificial Intelligence">
 <meta name="twitter:card" content="summary">
@@ -120,7 +120,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Authors"><span class="toc-number">1.</span> <span class="toc-text">Authors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">2.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aim-amp-Methodology"><span class="toc-number">3.</span> <span class="toc-text">Aim &amp; Methodology</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Results"><span class="toc-number">4.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Paper-link"><span class="toc-number">5.</span> <span class="toc-text">Paper link</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Authors"><span class="toc-number">1.</span> <span class="toc-text">Authors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">2.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aim-amp-Methodology"><span class="toc-number">3.</span> <span class="toc-text">Aim &amp; Methodology</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Results"><span class="toc-number">4.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Evaluation"><span class="toc-number">5.</span> <span class="toc-text">Evaluation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Baseline-algorithm"><span class="toc-number">5.1.</span> <span class="toc-text">Baseline algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithmic-metrics"><span class="toc-number">5.2.</span> <span class="toc-text">Algorithmic metrics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Urban-metrics"><span class="toc-number">5.3.</span> <span class="toc-text">Urban metrics</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Paper-link"><span class="toc-number">6.</span> <span class="toc-text">Paper link</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -220,6 +220,116 @@
   Figure 3: Comparisons of our MARL readjustment outcome and original status of land use distribution in Kendall Square.
 </div>
 
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><h2 id="Baseline-algorithm"><a href="#Baseline-algorithm" class="headerlink" title="Baseline algorithm"></a>Baseline algorithm</h2><p>In our study, conducted within both top-down and participatory planning environments, we select four methods as baselines for comparison: the random method, the greedy method, DRL and our proposed method. Specifically:</p>
+<ol>
+<li><p>The random method, Random Top-down Planning (Random-TP) and Random Participatory Planning (Random-PP), allows each agent to vote for a land-use type based on random selection.</p>
+</li>
+<li><p>The greedy method, Greedy Top-down Planning (Greedy-TP) and Greedy Participatory Planning (Greedy-PP) enables agents to vote for the land-use type that is most beneficial to them individually, neglecting the global impact.</p>
+</li>
+<li><p>The DRL method, DRL Top-down Planning (DRL-TP) is employed in top-down planning, centralizing decision-making of land readjustment.</p>
+</li>
+</ol>
+<h2 id="Algorithmic-metrics"><a href="#Algorithmic-metrics" class="headerlink" title="Algorithmic metrics"></a>Algorithmic metrics</h2><p>To assess the performance of compared methods from an algorithmic standpoint, we focused on two key rewards, Global Reward and Equity Reward, derived from the reward metrics aforementioned: global awareness and equity awareness. Utilizing these metrics quantifies the capability of each approach to not only optimize land use distribution in alignment with overarching urban development goals but also to balance individual interests, emphasizing social equity in the decision-making process. Thus, we focus on maximizing the Global Reward and simultaneously minimizing the Equity Reward in the experiment.</p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Global reward</th>
+<th>Equity reward</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Random-TP</td>
+<td>0.958</td>
+<td>36084.443</td>
+</tr>
+<tr>
+<td>Random-PP</td>
+<td>0.942</td>
+<td>38697.276</td>
+</tr>
+<tr>
+<td>Greedy-TP</td>
+<td>0.965</td>
+<td>42117.190</td>
+</tr>
+<tr>
+<td>Greedy-PP</td>
+<td>0.962</td>
+<td>35328.027</td>
+</tr>
+<tr>
+<td>DRL-TP</td>
+<td>1.018</td>
+<td>40532.082</td>
+</tr>
+<tr>
+<td><strong>Our method</strong></td>
+<td><strong>1.018</strong></td>
+<td><strong>28240.209</strong></td>
+</tr>
+</tbody></table>
+<h2 id="Urban-metrics"><a href="#Urban-metrics" class="headerlink" title="Urban metrics"></a>Urban metrics</h2><p>Beyond the algorithmic metrics, the outcomes proposed by each method are assessed from urban planning perspectives, specifically examining the potential improvement in the quality of life for agents in the region. In <a target="_blank" rel="noopener" href="https://www.cambridgeredevelopment.org/kendall-square-3">the government planning guideline of Kendall Square</a>, four planning metrics, sustainability, innovation, service, and diversity, stand out as crucial determinants of its planning targets.</p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Sustainability</th>
+<th>Innovation</th>
+<th>Service</th>
+<th>Diversity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Initial state</td>
+<td>0.11</td>
+<td>0.36</td>
+<td>0.39</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Random-TP</td>
+<td>0.19</td>
+<td>0.48</td>
+<td>0.38</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Random-PP</td>
+<td>0.15</td>
+<td>0.47</td>
+<td>0.39</td>
+<td>0.82</td>
+</tr>
+<tr>
+<td>Greedy-TP</td>
+<td>0.17</td>
+<td>0.47</td>
+<td>0.38</td>
+<td>0.81</td>
+</tr>
+<tr>
+<td>Greedy-PP</td>
+<td>0.17</td>
+<td>0.48</td>
+<td>0.38</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td>DRL-TP</td>
+<td>0.27</td>
+<td>0.48</td>
+<td>0.41</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td><strong>Our method</strong></td>
+<td><strong>0.63</strong></td>
+<td><strong>0.79</strong></td>
+<td><strong>0.41</strong></td>
+<td><strong>1.42</strong></td>
+</tr>
+</tbody></table>
 <h1 id="Paper-link"><a href="#Paper-link" class="headerlink" title="Paper link"></a>Paper link</h1><p>View our paper: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.16772">ArXivL:2310.16772</a></p>
 
   </div>
@@ -246,7 +356,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Authors"><span class="toc-number">1.</span> <span class="toc-text">Authors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">2.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aim-amp-Methodology"><span class="toc-number">3.</span> <span class="toc-text">Aim &amp; Methodology</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Results"><span class="toc-number">4.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Paper-link"><span class="toc-number">5.</span> <span class="toc-text">Paper link</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Authors"><span class="toc-number">1.</span> <span class="toc-text">Authors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">2.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aim-amp-Methodology"><span class="toc-number">3.</span> <span class="toc-text">Aim &amp; Methodology</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Results"><span class="toc-number">4.</span> <span class="toc-text">Results</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Evaluation"><span class="toc-number">5.</span> <span class="toc-text">Evaluation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Baseline-algorithm"><span class="toc-number">5.1.</span> <span class="toc-text">Baseline algorithm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithmic-metrics"><span class="toc-number">5.2.</span> <span class="toc-text">Algorithmic metrics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Urban-metrics"><span class="toc-number">5.3.</span> <span class="toc-text">Urban metrics</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Paper-link"><span class="toc-number">6.</span> <span class="toc-text">Paper link</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
